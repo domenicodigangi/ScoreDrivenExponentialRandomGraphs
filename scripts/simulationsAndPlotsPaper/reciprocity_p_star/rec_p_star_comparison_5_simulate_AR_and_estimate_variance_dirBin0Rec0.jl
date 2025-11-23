@@ -130,7 +130,7 @@ end
 fig.suptitle("Estimate Variance of Latent AR1 in reciprocity p* model N = $N")
 plt.tight_layout()
 
-plt.savefig("C:\\Users\\digan\\Dropbox\\Dynamic_Networks\\repos\\ScoreDrivenExponentialRandomGraphs\\_research\\analysis_for_paper_revision\\plots_for_revision\\estimate_var_latent_AR1_N_$(N)_$modTag")
+plt.savefig(projectdir("_research", "analysis_for_paper_revision", "plots_for_revision", "estimate_var_latent_AR1_N_$(N)_$modTag.png"))
 end
 #endregion
 

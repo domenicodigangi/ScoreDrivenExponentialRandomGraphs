@@ -80,8 +80,6 @@ tend_train = 365
 N = n_nodes_T[t0_train:tend_train]
 obsT = row.ch_stats[t0_train:tend_train]
 
-ENV["JULIA_DEBUG"] = ScoreDrivenERGM
-
 res_est = DynNets.estimate_and_filter(model, N, obsT; show_trace = true)
 fig, ax = DynNets.plot_filtered(model, N, res_est[3])
 end

@@ -30,4 +30,4 @@ TableView = "40c74d1a-b44c-5b06-a7c1-6cbea58ea978"
 Zygote = "e88e6eb3-aa80-5325-afca-941959d7151f"
 
 [compat]
-julia = "1.5.3"
+julia = "1.6"
