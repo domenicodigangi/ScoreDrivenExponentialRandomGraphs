@@ -1,14 +1,10 @@
 #########
-#File: c:\Users\digan\Dropbox\Dynamic_Networks\repos\ScoreDrivenExponentialRandomGraphs\scripts\simulationsAndPlotsPaper\reciprocity_p_star\simulate_AR_and_estimate_variance_edges_GWESP.jl
-#Project: c:\Users\digan\Dropbox\Dynamic_Networks\repos\ScoreDrivenExponentialRandomGraphs\scripts\simulationsAndPlotsPaper\reciprocity_p_star
-#Created Date: Wednesday April 28th 2021
-#Author: Domenico Di Gangi,  <digangidomenico@gmail.com>
-#-----
-#Last Modified: Thursday June 3rd 2021 11:28:04 pm
-#Modified By:  Domenico Di Gangi
-#-----
-#Description:
-#-----
+# Load AR filtered parameters and create plots
+# Created Date: Wednesday April 28th 2021
+# Author: Domenico Di Gangi,  <digangidomenico@gmail.com>
+# Last Modified: Thursday June 3rd 2021 11:28:04 pm
+# Modified By:  Domenico Di Gangi
+# Description: Estimate variance of latent AR1 process
 ########
 
 
@@ -72,7 +68,7 @@ end
 fig.suptitle("Estimate Variance of Latent AR1 in $(model.staticModel.ergmTermsString)  N = $N")
 plt.tight_layout()
 
-# plt.savefig("C:\\Users\\digan\\Dropbox\\Dynamic_Networks\\repos\\ScoreDrivenExponentialRandomGraphs\\_research\\analysis_for_paper_revision\\plots_for_revision\\estimate_var_latent_AR1_N_$(N)_$model")
+# plt.savefig(projectdir("_research", "analysis_for_paper_revision", "plots_for_revision", "estimate_var_latent_AR1_N_$(N)_$model.png"))
 end
 #endregion
 

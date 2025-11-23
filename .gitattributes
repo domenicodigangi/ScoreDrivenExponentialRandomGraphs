@@ -1,0 +1,37 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Julia files
+*.jl text eol=lf
+
+# Documentation
+*.md text eol=lf
+*.txt text eol=lf
+
+# Data files
+*.csv text eol=lf
+*.json text eol=lf
+*.toml text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.pdf binary
+*.jld binary
+*.jld2 binary
+*.RData binary
+*.feather binary
+*.gz binary
+*.zip binary
+
+# Scripts
+*.sh text eol=lf
+*.bash text eol=lf
+
+# Configuration
+.gitignore text eol=lf
+.gitattributes text eol=lf
