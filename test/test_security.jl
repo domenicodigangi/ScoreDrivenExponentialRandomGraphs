@@ -1,7 +1,10 @@
 using Test
+using DrWatson
+
+@quickactivate "ScoreDrivenExponentialRandomGraphs"
 
 # Load the Security module
-include("../src/Security.jl")
+include(projectdir("src", "Security.jl"))
 using .Security
 
 @testset "Security Module Tests" begin

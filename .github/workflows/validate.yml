@@ -1,0 +1,83 @@
+name: Validate Configuration
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+jobs:
+  validate:
+    name: Validate Project Configuration
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Validate Project.toml
+        run: |
+          echo "Checking Project.toml syntax..."
+          python3 -c "
+          import toml
+          with open('Project.toml', 'r') as f:
+              config = toml.load(f)
+              print('✓ Project.toml is valid')
+              print(f'Project: {config[\"name\"]}')
+          "
+
+      - name: Validate CI workflow
+        run: |
+          echo "Checking .github/workflows/CI.yml syntax..."
+          python3 -c "
+          import yaml
+          with open('.github/workflows/CI.yml', 'r') as f:
+              config = yaml.safe_load(f)
+              print('✓ CI.yml is valid YAML')
+              print(f'Jobs: {list(config[\"jobs\"].keys())}')
+          "
+
+      - name: Check test file structure
+        run: |
+          echo "Checking test directory structure..."
+          test -f test/runtests.jl || (echo "✗ test/runtests.jl not found" && exit 1)
+          test -f test/test_security.jl || (echo "✗ test/test_security.jl not found" && exit 1)
+          test -d src || (echo "✗ src directory not found" && exit 1)
+          echo "✓ Test structure is valid"
+
+      - name: Check for submodules
+        run: |
+          echo "Checking submodule initialization..."
+          test -d src/ScoreDrivenERGM.jl/src || (echo "✗ ScoreDrivenERGM.jl submodule not initialized" && exit 1)
+          test -f src/ScoreDrivenERGM.jl/src/ErgmRcall.jl || (echo "✗ ErgmRcall.jl not found" && exit 1)
+          echo "✓ Submodules are properly initialized"
+
+      - name: Validate Julia syntax
+        uses: julia-actions/setup-julia@v1
+        with:
+          version: '1.9'
+
+      - name: Check Julia files parse
+        run: |
+          julia -e '
+          using Pkg
+          println("Checking Julia file syntax...")
+
+          # Check test files
+          include("test/runtests.jl")
+          println("✓ test/runtests.jl parses correctly")
+
+          # Check Security module
+          include("src/Security.jl")
+          println("✓ src/Security.jl parses correctly")
+
+          println("✓ All Julia files have valid syntax")
+          '
+
+      - name: Summary
+        run: |
+          echo "================================"
+          echo "✓ All validation checks passed!"
+          echo "================================"

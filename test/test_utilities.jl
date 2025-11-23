@@ -1,4 +1,8 @@
 using Test
+using DrWatson
+
+@quickactivate "ScoreDrivenExponentialRandomGraphs"
+
 using ProjUtilities
 
 @testset "ProjUtilities Tests" begin

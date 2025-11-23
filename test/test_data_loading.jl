@@ -1,6 +1,4 @@
 using Test
-using CSV
-using DataFrames
 using DrWatson
 
 @quickactivate "ScoreDrivenExponentialRandomGraphs"
